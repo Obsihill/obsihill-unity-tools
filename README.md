@@ -19,9 +19,13 @@ You can install this package via Unity Package Manager using the Git URL.
 
 ## Features
 
-- Custom Toolbar
-- Selection Counter
-- (Add more features here)
+### SceneWarpToolBar
+
+- A toolbar that displays the list of scenes registered in Build Settings for quick navigation.
+
+### SelectionCounter
+
+- A toolbar that displays the count of selected GameObjects in the Hierarchy.
 
 ## License
 
