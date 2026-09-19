@@ -17,6 +17,12 @@ You can install this package via Unity Package Manager using the Git URL.
    https://github.com/Obsihill/obsihill-unity-tools.git
    ```
 
+To install this release explicitly, use the `v0.2.1` tag:
+
+```text
+https://github.com/Obsihill/obsihill-unity-tools.git#v0.2.1
+```
+
 ## Features
 
 ### SceneWarpToolBar
@@ -26,6 +32,8 @@ You can install this package via Unity Package Manager using the Git URL.
 ### SelectionCounter
 
 - A toolbar that displays the count of selected GameObjects in the Hierarchy.
+
+The package also includes **Toolbar Examples** under the Package Manager's Samples tab.
 
 ## License
 

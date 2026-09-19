@@ -17,6 +17,12 @@ Unity Package Manager를 통해 Git URL로 이 패키지를 설치할 수 있습
    https://github.com/Obsihill/obsihill-unity-tools.git
    ```
 
+특정 릴리스 버전을 설치하려면 `v0.2.1` 태그를 사용합니다:
+
+```text
+https://github.com/Obsihill/obsihill-unity-tools.git#v0.2.1
+```
+
 ## 기능
 
 ### SceneWarpToolBar
@@ -26,6 +32,8 @@ Unity Package Manager를 통해 Git URL로 이 패키지를 설치할 수 있습
 ### SelectionCounter
 
 - 하이어라키에 선택한 게임오브젝트 카운트를 표시하는 툴바.
+
+Package Manager의 Samples 탭에서 **Toolbar Examples** 샘플도 가져올 수 있습니다.
 
 ## 요구사항
 
