@@ -70,7 +70,7 @@ namespace Obsihill.Editor
 
 ### 조건부 컴파일
 
-Unity 6 이상에서만 컴파일되도록 `#if UNITY_6000_3_OR_NEWER` 지시문을 사용합니다. 이전 버전에서는 코드가 포함되지 않습니다.
+Unity 6000.3 이상에서만 컴파일되도록 `#if UNITY_6000_3_OR_NEWER` 지시문을 사용합니다. 이전 버전에서는 코드가 포함되지 않습니다.
 
 ## 확장
 

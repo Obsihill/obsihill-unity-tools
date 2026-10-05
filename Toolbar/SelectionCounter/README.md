@@ -12,7 +12,7 @@ Displays the count of currently selected objects in the Unity main toolbar.
 ## Requirements
 
 - **Unity Version**: Unity 6.3 or higher
-- **Package**: UnityEditor.Toolbars (included in Unity 6+)
+- **API**: UnityEditor.Toolbars (included in Unity 6000.3+)
 
 ## Usage
 
@@ -34,7 +34,6 @@ When 5 objects are selected:
 ```
 Selected: 5
 ```
-![SelectionCountMainToolbar screenshot](ScreenShot.png)
 Tooltip text:
 ```
 Number of objects selected in Hierarchy

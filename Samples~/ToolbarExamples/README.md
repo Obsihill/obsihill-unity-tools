@@ -18,7 +18,7 @@
 2. "Samples" 섹션을 확장합니다
 3. "Toolbar Examples" 옆의 "Import" 버튼을 클릭합니다
 
-임포트 후, 스크립트는 `Assets/Samples/Obsihill Tools/1.0.0/Toolbar Examples/` 경로에 저장됩니다.
+임포트 후, 스크립트는 `Assets/Samples/Obsihill Tools/<설치 버전>/Toolbar Examples/Editor/` 경로에 저장됩니다. `Editor` 폴더는 플레이어 빌드에서 샘플 코드를 제외합니다.
 
 ## 예제 설명
 
@@ -40,4 +40,4 @@ public static MainToolbarElement CreateButton()
 ## 추가 리소스
 
 - [Unity Toolbar API 문서](https://docs.unity3d.com/ScriptReference/Toolbars.html)
-- [패키지 메인 문서](../../Documentation~/index.md)
+- [패키지 메인 문서](https://github.com/Obsihill/obsihill-unity-tools/tree/main/Documentation~)

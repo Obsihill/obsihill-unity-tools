@@ -1,0 +1,6 @@
+{
+  "name": "Obsihill.Tools.Editor",
+  "rootNamespace": "Obsihill.Editor",
+  "includePlatforms": ["Editor"],
+  "autoReferenced": true
+}

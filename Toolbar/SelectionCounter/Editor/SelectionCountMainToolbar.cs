@@ -7,7 +7,7 @@ namespace Obsihill.Editor
 {
     /// <summary>
     /// Displays the count of currently selected objects in the main toolbar.
-    /// Works on Unity 6 and above.
+    /// Works on Unity 6000.3 and above.
     /// </summary>
     public static class SelectionCountMainToolbar
     {
@@ -17,7 +17,13 @@ namespace Obsihill.Editor
         [MainToolbarElement(ElementPath, defaultDockPosition = MainToolbarDockPosition.Right)]
         public static MainToolbarElement CreateSelectionCountLabel()
         {
-            int count = Selection.count;
+            int count = 0;
+            foreach (var gameObject in Selection.gameObjects)
+            {
+                if (gameObject != null && !EditorUtility.IsPersistent(gameObject)
+                    && gameObject.scene.IsValid() && gameObject.scene.isLoaded)
+                    count++;
+            }
             string displayText = $"Selected: {count}";
 
             var content = new MainToolbarContent(displayText, "Number of objects selected in Hierarchy");

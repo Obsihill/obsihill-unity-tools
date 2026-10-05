@@ -35,6 +35,13 @@ https://github.com/Obsihill/obsihill-unity-tools.git#v0.2.1
 
 Package Manager의 Samples 탭에서 **Toolbar Examples** 샘플도 가져올 수 있습니다.
 
+### Hierarchy Active Toggle
+
+- 하이어라키에 포커스를 두고 게임오브젝트를 선택한 뒤 **G** 키를 누르면 각 오브젝트의 활성 상태(`activeSelf`)가 반전됩니다.
+- 다중 선택, 비활성 오브젝트, Undo/Redo, 프리팹 인스턴스 변경 기록을 지원합니다.
+- 오브젝트 이름이나 텍스트 입력 중에는 동작하지 않습니다. 부모가 비활성이면 자식을 켜도 부모를 켜기 전까지 씬에서는 비활성 상태입니다.
+- **Edit > Shortcuts > Obsihill/Toggle Selected Active**에서 키를 변경할 수 있습니다.
+
 ## 요구사항
 
 - Unity 6000.3 이상

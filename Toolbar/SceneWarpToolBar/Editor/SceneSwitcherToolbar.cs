@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEditor.SceneManagement; // 씬 관리를 위해 필수
 using UnityEngine;
-#if UNITY_6000_0_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
 using UnityEditor.Toolbars; // 유니티 6 툴바 네임스페이스
 
 namespace Obsihill.Editor
@@ -29,6 +29,7 @@ namespace Obsihill.Editor
 
             // 3. 버튼 생성 (클릭 시 ShowSceneMenu 함수 실행)
             var button = new MainToolbarButton(content, ShowSceneMenu);
+            button.enabled = !EditorApplication.isPlayingOrWillChangePlaymode;
             
             return button;
         }
@@ -36,29 +37,27 @@ namespace Obsihill.Editor
         // 4. 드롭다운 메뉴 표시 로직
         private static void ShowSceneMenu()
         {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) return;
+
             GenericMenu menu = new GenericMenu();
             var scenes = EditorBuildSettings.scenes;
-
-            if (scenes.Length == 0)
+            int enabledSceneCount = 0;
+            // Build Settings에 있는 활성 씬을 표시합니다.
+            foreach (var scene in scenes)
             {
-                menu.AddDisabledItem(new GUIContent("No scenes in Build Settings"));
-            }
-            else
-            {
-                // Build Settings에 있는 모든 씬을 루프
-                foreach (var scene in scenes)
-                {
-                    if (!scene.enabled) continue; // 비활성화된 씬 제외
+                if (!scene.enabled) continue;
+                enabledSceneCount++;
 
-                    string name = System.IO.Path.GetFileNameWithoutExtension(scene.path);
-                    string path = scene.path;
+                string name = System.IO.Path.GetFileNameWithoutExtension(scene.path);
+                string path = scene.path;
 
-                    // 메뉴 아이템 추가
-                    menu.AddItem(new GUIContent(name), false, () => {
-                        OpenScene(path);
-                    });
-                }
+                menu.AddItem(new GUIContent($"{name} ({path.Replace('/', '\\')})"),
+                    UnityEngine.SceneManagement.SceneManager.GetActiveScene().path == path,
+                    () => OpenScene(path));
             }
+
+            if (enabledSceneCount == 0)
+                menu.AddDisabledItem(new GUIContent("No enabled scenes in Build Settings"));
             
             // 메뉴 구분선 및 Build Settings 바로가기 추가
             menu.AddSeparator("");
@@ -73,6 +72,13 @@ namespace Obsihill.Editor
         // 5. 실제 씬 이동 로직
         private static void OpenScene(string scenePath)
         {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) return;
+            if (AssetDatabase.LoadAssetAtPath<SceneAsset>(scenePath) == null)
+            {
+                Debug.LogWarning($"Scene no longer exists: {scenePath}");
+                return;
+            }
+
             // 변경사항이 있다면 저장할지 물어보는 안전장치
             if (EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
             {
@@ -89,9 +95,39 @@ namespace Obsihill.Editor
         {
             EditorSceneManager.sceneOpened -= OnSceneOpened;
             EditorSceneManager.sceneOpened += OnSceneOpened;
+            EditorSceneManager.activeSceneChangedInEditMode -= OnActiveSceneChanged;
+            EditorSceneManager.activeSceneChangedInEditMode += OnActiveSceneChanged;
+            EditorSceneManager.newSceneCreated -= OnNewSceneCreated;
+            EditorSceneManager.newSceneCreated += OnNewSceneCreated;
+            EditorSceneManager.sceneSaved -= OnSceneSaved;
+            EditorSceneManager.sceneSaved += OnSceneSaved;
+            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
         }
 
         private static void OnSceneOpened(UnityEngine.SceneManagement.Scene scene, OpenSceneMode mode)
+        {
+            MainToolbar.Refresh(ElementPath);
+        }
+
+        private static void OnActiveSceneChanged(UnityEngine.SceneManagement.Scene previous,
+            UnityEngine.SceneManagement.Scene current)
+        {
+            MainToolbar.Refresh(ElementPath);
+        }
+
+        private static void OnNewSceneCreated(UnityEngine.SceneManagement.Scene scene,
+            NewSceneSetup setup, NewSceneMode mode)
+        {
+            MainToolbar.Refresh(ElementPath);
+        }
+
+        private static void OnSceneSaved(UnityEngine.SceneManagement.Scene scene)
+        {
+            MainToolbar.Refresh(ElementPath);
+        }
+
+        private static void OnPlayModeStateChanged(PlayModeStateChange state)
         {
             MainToolbar.Refresh(ElementPath);
         }

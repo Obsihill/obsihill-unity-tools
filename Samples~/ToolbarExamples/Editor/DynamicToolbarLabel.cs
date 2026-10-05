@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -50,4 +51,5 @@ namespace Obsihill.Editor.Examples
         }
     }
 }
+#endif
 #endif
