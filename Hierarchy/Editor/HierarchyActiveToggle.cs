@@ -9,9 +9,19 @@ namespace Obsihill.Editor
 {
     public sealed class HierarchyShortcutContext : IShortcutContext
     {
-        public bool active => EditorWindow.focusedWindow != null
-            && EditorWindow.focusedWindow.GetType().FullName == "UnityEditor.SceneHierarchyWindow"
+        public bool active => IsHierarchyWindow(EditorWindow.focusedWindow)
             && !EditorGUIUtility.editingTextField;
+
+        private static bool IsHierarchyWindow(EditorWindow window)
+        {
+            if (window == null)
+                return false;
+
+            // Unity 6000.6 uses the new Hierarchy window; earlier versions use SceneHierarchyWindow.
+            string windowType = window.GetType().FullName;
+            return windowType == "UnityEditor.SceneHierarchyWindow"
+                || windowType == "Unity.Hierarchy.Editor.HierarchyWindow";
+        }
     }
 
     public static class HierarchyActiveToggle

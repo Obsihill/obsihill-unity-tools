@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 
+- Recognized Unity 6000.6's new Hierarchy window so the G shortcut activates on both the new and legacy Hierarchy.
 - Added an Editor-only assembly definition so UPM compiles the package scripts.
 - Moved toolbar samples into an Editor folder and guarded their UnityEditor references for player builds.
 - Limited the selection counter to scene GameObjects instead of counting project assets.
