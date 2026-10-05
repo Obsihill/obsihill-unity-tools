@@ -18,6 +18,12 @@ Unity Package Manager를 통해 설치할 수 있습니다:
 https://github.com/Obsihill/obsihill-unity-tools.git
 ```
 
+0.2.2 릴리스를 고정해서 설치하려면 다음 URL을 사용합니다:
+
+```text
+https://github.com/Obsihill/obsihill-unity-tools.git#v0.2.2
+```
+
 자세한 설치 방법은 [README](../README.md)를 참조하세요.
 
 ## 포함된 도구

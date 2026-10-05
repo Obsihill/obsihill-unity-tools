@@ -17,10 +17,10 @@ Unity Package Manager를 통해 Git URL로 이 패키지를 설치할 수 있습
    https://github.com/Obsihill/obsihill-unity-tools.git
    ```
 
-특정 릴리스 버전을 설치하려면 `v0.2.1` 태그를 사용합니다:
+특정 릴리스 버전을 설치하려면 `v0.2.2` 태그를 사용합니다:
 
 ```text
-https://github.com/Obsihill/obsihill-unity-tools.git#v0.2.1
+https://github.com/Obsihill/obsihill-unity-tools.git#v0.2.2
 ```
 
 ## 기능

@@ -17,10 +17,10 @@ You can install this package via Unity Package Manager using the Git URL.
    https://github.com/Obsihill/obsihill-unity-tools.git
    ```
 
-To install this release explicitly, use the `v0.2.1` tag:
+To install this release explicitly, use the `v0.2.2` tag:
 
 ```text
-https://github.com/Obsihill/obsihill-unity-tools.git#v0.2.1
+https://github.com/Obsihill/obsihill-unity-tools.git#v0.2.2
 ```
 
 ## Features
